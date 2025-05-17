@@ -33,16 +33,12 @@ const socialLinks = [
     icon: "ri-facebook-line",
   },
   {
-    url: "#",
+    url: "https://www.instagram.com/autorental_pojana",
     icon: "ri-instagram-line",
   },
   {
-    url: "#",
-    icon: "ri-linkedin-line",
-  },
-  {
-    url: "#",
-    icon: "ri-twitter-line",
+    url: "https://www.tiktok.com/@autorental.pojana",
+    icon: "ri-tiktok-line",
   },
 ];
 
@@ -63,9 +59,9 @@ const Header = () => {
               <div className="header__top__left">
                 <span>Need Help?</span>
                 <span className="header__top__help">
-                  <a href="tel:+355688215013" className='phone-icon' aria-label="Phone">
+                <a href="https://wa.me/355683214444" className="phone-icon" aria-label="WhatsApp" target="_blank" rel="noopener noreferrer">
                     <i className="ri-phone-fill"></i>
-                  </a>
+                </a>
                 </span>
               </div>
             </Col>

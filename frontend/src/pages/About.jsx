@@ -26,37 +26,32 @@ const About = () => {
             </Col>
 
             <Col lg="6" md="6" sm="12">
-              <div className="about__page-content">
-                <h2 className="section__title">
-                  We Are Committed To Provide Safe Ride Solutions
-                </h2>
+  <div className="about__page-content">
+    <h2 className="section__title">
+      We Are Committed To Provide Safe Ride Solutions
+    </h2>
 
-                <p className="section__description">
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                  Eveniet veniam assumenda aperiam accusantium ex autem
-                  perferendis repellendus nostrum delectus. Nemo et dolore est
-                  tempore rem minima adipisci magni dolorum ipsam.
-                </p>
+    <p className="section__description">
+      At Auto Rental Pojana, we focus on providing reliable and safe transportation across Albania. Whether you're arriving at Tirana International Airport or need a ride within the city, our rental service is here to make your journey smooth and stress-free.
+    </p>
 
-                <p className="section__description">
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                  Eveniet veniam assumenda aperiam accusantium ex autem
-                  perferendis repellendus nostrum delectus. Nemo et dolore est
-                  tempore rem minima adipisci magni dolorum ipsam.
-                </p>
+    <p className="section__description">
+      All our vehicles are well-maintained and regularly inspected to ensure comfort and security. With easy booking, transparent pricing, and flexible pickup options, your satisfaction is our top priority.
+    </p>
 
-                <div className=" d-flex align-items-center gap-3 mt-4">
-                  <span className="fs-4">
-                    <i class="ri-phone-line"></i>
-                  </span>
+    <div className=" d-flex align-items-center gap-3 mt-4">
+      <span className="fs-4">
+        <i className="ri-phone-line"></i>
+      </span>
 
-                  <div>
-                    <h6 className="section__subtitle">Need Any Help?</h6>
-                    <h4>+00123456789</h4>
-                  </div>
-                </div>
-              </div>
-            </Col>
+      <div>
+        <h6 className="section__subtitle">Need Any Help?</h6>
+        <h4>+355 68 321 4444</h4>
+      </div>
+    </div>
+  </div>
+</Col>
+
           </Row>
         </Container>
       </section>
