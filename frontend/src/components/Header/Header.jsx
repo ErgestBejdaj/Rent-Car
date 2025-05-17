@@ -134,6 +134,8 @@ const Header = () => {
             <span className="mobile__menu" onClick={toggleMenu} aria-label="Toggle Menu">
               {isMenuOpen ? <i className="ri-menu-line"></i> : <i className="ri-menu-line"></i>}
             </span>
+            <span className='text-white font-bold text-2xl'>Auto Rental Pojana</span>
+
 
             <div className={`navigation ${isMenuOpen ? 'open' : ''}`}>
               <div className="menu">
