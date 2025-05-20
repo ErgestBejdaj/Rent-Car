@@ -5,8 +5,6 @@ import { useParams } from "react-router-dom";
 import { Container, Row, Col } from "reactstrap";
 import carData from "../assets/data/carData.js";
 import Helmet from "../components/Helmet/Helmet";
-import BookingForm from "../components/UI/BookingForm";
-import PaymentMethod from "../components/UI/PaymentMethod";
 
 const CarDetails = () => {
   const { slug } = useParams();
@@ -105,20 +103,16 @@ const CarDetails = () => {
                     {singleCarItem.brand}
                   </span>
                 </div>
-              </div>
-            </Col>
-
-            <Col lg="7" className="mt-5">
-              <div className="booking-info mt-5">
-                <h5 className="mb-4 fw-bold">Booking Information</h5>
-                <BookingForm />
-              </div>
-            </Col>
-
-            <Col lg="5" className="mt-5">
-              <div className="payment__info mt-5">
-                <h5 className="mb-4 fw-bold">Payment Information</h5>
-                <PaymentMethod rentalAmount={singleCarItem.price} />
+                <div
+                  className="d-flex align-items-center mt-3"
+                  style={{ columnGap: "2.8rem" }}
+                  >
+                     <button className="header__btn btn">
+                        <a href="https://wa.me/355683214444" className="phone-icon" aria-label="WhatsApp" target="_blank" rel="noopener noreferrer">
+                            <i className="ri-whatsapp-line"></i> Chat on Whatsapp
+                        </a>                           
+                     </button>
+                  </div>
               </div>
             </Col>
           </Row>

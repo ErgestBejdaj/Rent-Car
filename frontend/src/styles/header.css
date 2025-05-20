@@ -74,6 +74,15 @@
 .logo h1 {
   line-height: 1.5rem;
 }
+.logo-menu span {
+  font-size: 1.2rem;
+  text-decoration: none;
+  color: white;
+}
+.logo-menu i{
+  color: white;
+}
+
 
 .header__location span i {
   font-size: 2.2rem;

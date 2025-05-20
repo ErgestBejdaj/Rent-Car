@@ -111,8 +111,8 @@ const Header = () => {
               <div className="header__location d-flex align-items-center gap-2">
                 <span><i className="ri-time-line"></i></span>
                 <div className="header__location-content">
-                  <h4>Sunday to Friday</h4>
-                  <h6>10am - 7 pm</h6>
+                  <h4>Support</h4>
+                  <h6>24 Hour</h6>
                 </div>
               </div>
             </Col>
@@ -120,7 +120,7 @@ const Header = () => {
             <Col lg="2" md="3" sm="0" className="d-flex align-items-center justify-content-end">
               <button className="header__btn btn">
                 <Link to="/contact">
-                  <i className="ri-whatsapp-line"></i> Contact Whatsapp
+                  <i className="ri-whatsapp-line"></i> Chat on Whatsapp
                 </Link>
               </button>
             </Col>
@@ -134,7 +134,14 @@ const Header = () => {
             <span className="mobile__menu" onClick={toggleMenu} aria-label="Toggle Menu">
               {isMenuOpen ? <i className="ri-menu-line"></i> : <i className="ri-menu-line"></i>}
             </span>
-            <span className='text-white font-bold text-2xl'>Auto Rental Pojana</span>
+            <div className="logo-menu">
+                <h1>
+                  <Link to="/home" className="d-flex align-items-center gap-3 text-decoration-none">
+                    <i className="ri-car-line"></i>
+                    <span>Auto Rental <br />Pojana</span>
+                  </Link>
+                </h1>
+              </div>
 
 
             <div className={`navigation ${isMenuOpen ? 'open' : ''}`}>

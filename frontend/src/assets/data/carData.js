@@ -22,7 +22,7 @@ const carData = [
     seatType: "Heated seats",
     automatic: "Automatic",
     description:
-      " Dolor labore lorem no accusam sit justo sadipscing labore invidunt voluptua, amet duo et gubergren vero gubergren dolor. At diam. Dolor labore lorem no accusam sit justo sadipscing labore invidunt voluptua, amet duo et gubergren vero gubergren dolor. At diam.",
+  "The Mercedez S-Class offers an exceptional experience of luxury and comfort. Equipped with heated seats, built-in GPS navigation, and an automatic transmission system, this car is perfect for long trips or special occasions. The 2015 model is fuel-efficient and runs on petrol.",
   },
 
   {
@@ -38,25 +38,8 @@ const carData = [
     seatType: "Heated seats",
     automatic: "Automatic",
     description:
-      " Dolor labore lorem no accusam sit justo sadipscing labore invidunt voluptua, amet duo et gubergren vero gubergren dolor. At diam. Dolor labore lorem no accusam sit justo sadipscing labore invidunt voluptua, amet duo et gubergren vero gubergren dolor. At diam.",
+    "The Audi Q8 is a premium SUV that combines bold design with powerful performance. Featuring heated seats, GPS navigation, and an automatic transmission, it ensures a smooth and comfortable driving experience. The 2020 model runs on petrol and is perfect for both city drives and long-distance travel.",
   },
-
-  {
-    id: 3,
-    brand: "Audi",
-    rating: 132,
-    carName: "Audi A5",
-    imgUrl: img03,
-    model: "Model-2022",
-    price: 50,
-    speed: "Diesel",
-    gps: "GPS Navigation",
-    seatType: "Heated seats",
-    automatic: "Automatic",
-    description:
-      " Dolor labore lorem no accusam sit justo sadipscing labore invidunt voluptua, amet duo et gubergren vero gubergren dolor. At diam. Dolor labore lorem no accusam sit justo sadipscing labore invidunt voluptua, amet duo et gubergren vero gubergren dolor. At diam.",
-  },
-
   {
     id: 4,
     brand: "Mercedez-Benz",
@@ -70,7 +53,7 @@ const carData = [
     seatType: "Heated seats",
     automatic: "Automatic",
     description:
-      " Dolor labore lorem no accusam sit justo sadipscing labore invidunt voluptua, amet duo et gubergren vero gubergren dolor. At diam. Dolor labore lorem no accusam sit justo sadipscing labore invidunt voluptua, amet duo et gubergren vero gubergren dolor. At diam.",
+  "The Mercedez E-Class is a stylish and reliable sedan known for its smooth ride and advanced features. Equipped with heated seats, GPS navigation, and an automatic transmission, it offers comfort and convenience at an affordable price. The 2014 model runs on diesel and is ideal for both business and leisure trips.",
   },
 
   {
@@ -86,7 +69,7 @@ const carData = [
     seatType: "Heated seats",
     automatic: "Automatic",
     description:
-      " Dolor labore lorem no accusam sit justo sadipscing labore invidunt voluptua, amet duo et gubergren vero gubergren dolor. At diam. Dolor labore lorem no accusam sit justo sadipscing labore invidunt voluptua, amet duo et gubergren vero gubergren dolor. At diam.",
+    "The Porsche Cayenne blends luxury and sportiness in a powerful SUV package. With heated seats, GPS navigation, and automatic transmission, it delivers both comfort and performance. The 2012 diesel model is a great choice for those looking for a premium driving experience at a reasonable price.",  
   },
 
   {
@@ -102,7 +85,8 @@ const carData = [
     seatType: "Heated seats",
     automatic: "Automatic",
     description:
-      " Dolor labore lorem no accusam sit justo sadipscing labore invidunt voluptua, amet duo et gubergren vero gubergren dolor. At diam. Dolor labore lorem no accusam sit justo sadipscing labore invidunt voluptua, amet duo et gubergren vero gubergren dolor. At diam.",
+    "The Audi A4 is a sleek and refined sedan that offers excellent performance and comfort. This 2019 petrol model features heated seats, GPS navigation, and automatic transmission—making it perfect for daily commutes or weekend getaways. Experience premium quality at an affordable price.",
+  
   },
 
 

@@ -8,16 +8,8 @@ const quicklinks = [
     display: 'About'
   },
   {
-    path: '#',
-    display: 'Privacy Policy'
-  },
-  {
     path: '/cars',
     display: 'Car Listing'
-  },
-  {
-    path: '/blogs',
-    display: 'Blog'
   },
   {
     path: '/contact',
@@ -45,8 +37,7 @@ const Footer = () => {
               </h1>
             </div>
             <p className='footer__logo-content'>
-              Auto Rental Pojana – ofrojmë makina me qira në Tiranë dhe Aeroportin e Rinasit. Flotë moderne, çmime konkurruese dhe mbështetje 24/7 për çdo klient.
-            </p>
+               Auto Rental Pojana – we offer car rentals in Tirana and Rinas Airport. Modern fleet, competitive prices, and 24/7 support for every customer.            </p>
           </Col>
 
           <Col lg='3' md='4' sm='6'>
@@ -88,7 +79,7 @@ const Footer = () => {
             <div className="footer__bottom pt-4">
               <p className="section__description d-flex align-items-center justify-content-center gap-1">
                 <i className="ri-copyright-line"></i>
-                Copyright {year}, Developed by Ergest Bejdaj. All rights reserved.
+                Copyright {year}, Developed by Bejdex Solution. All rights reserved.
               </p>
             </div>
           </Col>
