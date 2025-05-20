@@ -12,16 +12,12 @@ const socialLinks = [
     icon: "ri-facebook-line",
   },
   {
-    url: "#",
+    url: "https://www.instagram.com/autorental_pojana",
     icon: "ri-instagram-line",
   },
   {
-    url: "#",
-    icon: "ri-linkedin-line",
-  },
-  {
-    url: "#",
-    icon: "ri-twitter-line",
+    url: "https://www.tiktok.com/@autorental.pojana",
+    icon: "ri-tiktok-line",
   },
 ];
 
@@ -60,16 +56,16 @@ const Contact = () => {
               <div className="contact__info">
                 <h6 className="fw-bold">Contact Information</h6>
                 <p className="section__description mb-0">
-                  123 ZindaBazar, Sylhet, Bangladesh
+                Kompleksi Delijorgji, Tiranë,Albania
                 </p>
                 <div className=" d-flex align-items-center gap-2">
                   <h6 className="fs-6 mb-0">Phone:</h6>
-                  <p className="section__description mb-0">+88683896366</p>
+                  <p className="section__description mb-0">+355 68 321 4444</p>
                 </div>
 
                 <div className=" d-flex align-items-center gap-2">
                   <h6 className="mb-0 fs-6">Email:</h6>
-                  <p className="section__description mb-0">example@gmail.com</p>
+                  <p className="section__description mb-0">rentalpojana@gmail.com</p>
                 </div>
 
                 <h6 className="fw-bold mt-4">Follow Us</h6>

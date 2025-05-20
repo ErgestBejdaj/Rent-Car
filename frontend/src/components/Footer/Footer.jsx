@@ -58,23 +58,11 @@ const Footer = () => {
           <Col lg='3' md='4' sm='6'>
             <div className='mb-4'>
               <h5 className='footer__link-title'>Head Office</h5>
-              <p className='office__info'>Kompleksi Delijorgji, Tiranë, Shqipëri</p>
-              <p className='office__info'>Phone: +355 68 821 5013</p>
+              <p className='office__info'>Kompleksi Delijorgji, Tiranë,Albania</p>
+              <p className='office__info'>Phone: +355 68 321 4444</p>
               <p className='office__info'>Support: 24/7</p>
             </div>
           </Col>
-
-          <Col lg='3' className='mb-4'>
-            <div className='mb-4'>
-              <h5 className='footer__link-title'>Newsletter</h5>
-              <p className='section__description'>Subscribe to our newsletter</p>
-              <div className='newsletter'>
-                <input type='email' placeholder='Email' />
-                <span><i className="ri-send-plane-fill"></i></span>
-              </div>
-            </div>
-          </Col>
-
           <Col lg='12'>
             <div className="footer__bottom pt-4">
               <p className="section__description d-flex align-items-center justify-content-center gap-1">
