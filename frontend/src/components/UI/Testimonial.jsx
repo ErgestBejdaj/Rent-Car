@@ -40,78 +40,63 @@ const Testimonial = () => {
 
   return (
     <Slider {...settings}>
-      <div className="testimonial py-4 px-3">
-        <p className="section__description">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus magni
-          explicabo molestias recusandae repudiandae, dolor, sapiente placeat
-          ab, animi eum minima nulla facere aliquam aut vitae quo pariatur
-          voluptate odit?
-        </p>
-
-        <div className="mt-3 d-flex align-items-center gap-4">
-          <img src={ava01} alt="" className="w-25 h-25 rounded-2" />
-
-          <div>
-            <h6 className="mb-0 mt-3">Jhon Doe</h6>
-            <p className="section__description">Customer</p>
-          </div>
+    <div className="testimonial py-4 px-3">
+      <p className="section__description">
+        I rented a car from Auto Rental Pojana for a weekend trip — the service was fast, friendly, and the car was in perfect condition. Highly recommended!
+      </p>
+  
+      <div className="mt-3 d-flex align-items-center gap-4">
+        <img src={ava01} alt="" className="w-25 h-25 rounded-2" />
+        <div>
+          <h6 className="mb-0 mt-3">Mark T.</h6>
+          <p className="section__description">Customer</p>
         </div>
       </div>
-
-      <div className="testimonial py-4 px-3">
-        <p className="section__description">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus magni
-          explicabo molestias recusandae repudiandae, dolor, sapiente placeat
-          ab, animi eum minima nulla facere aliquam aut vitae quo pariatur
-          voluptate odit?
-        </p>
-
-        <div className="mt-3 d-flex align-items-center gap-4">
-          <img src={ava02} alt="" className="w-25 h-25 rounded-2" />
-
-          <div>
-            <h6 className="mb-0 mt-3">Jhon Doe</h6>
-            <p className="section__description">Customer</p>
-          </div>
+    </div>
+  
+    <div className="testimonial py-4 px-3">
+      <p className="section__description">
+        Amazing experience! Booking was easy and the staff was very helpful. I’ll definitely use Rental Pojana again for my future travels.
+      </p>
+  
+      <div className="mt-3 d-flex align-items-center gap-4">
+        <img src={ava02} alt="" className="w-25 h-25 rounded-2" />
+        <div>
+          <h6 className="mb-0 mt-3">Sophia M.</h6>
+          <p className="section__description">Customer</p>
         </div>
       </div>
-
-      <div className="testimonial py-4 px-3">
-        <p className="section__description">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus magni
-          explicabo molestias recusandae repudiandae, dolor, sapiente placeat
-          ab, animi eum minima nulla facere aliquam aut vitae quo pariatur
-          voluptate odit?
-        </p>
-
-        <div className="mt-3 d-flex align-items-center gap-4">
-          <img src={ava03} alt="" className="w-25 h-25 rounded-2" />
-
-          <div>
-            <h6 className="mb-0 mt-3">Jhon Doe</h6>
-            <p className="section__description">Customer</p>
-          </div>
+    </div>
+  
+    <div className="testimonial py-4 px-3">
+      <p className="section__description">
+        Great value for money! The vehicle was clean and fuel-efficient. Auto Pojana made my trip stress-free from start to finish.
+      </p>
+  
+      <div className="mt-3 d-flex align-items-center gap-4">
+        <img src={ava03} alt="" className="w-25 h-25 rounded-2" />
+        <div>
+          <h6 className="mb-0 mt-3">Dritan K.</h6>
+          <p className="section__description">Customer</p>
         </div>
       </div>
-
-      <div className="testimonial py-4 px-3">
-        <p className="section__description">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus magni
-          explicabo molestias recusandae repudiandae, dolor, sapiente placeat
-          ab, animi eum minima nulla facere aliquam aut vitae quo pariatur
-          voluptate odit?
-        </p>
-
-        <div className="mt-3 d-flex align-items-center gap-4">
-          <img src={ava04} alt="" className="w-25 h-25 rounded-2" />
-
-          <div>
-            <h6 className="mb-0 mt-3">Jhon Doe</h6>
-            <p className="section__description">Customer</p>
-          </div>
+    </div>
+  
+    <div className="testimonial py-4 px-3">
+      <p className="section__description">
+        I was impressed by their punctuality and professionalism. Auto Rental Pojana offered top-notch service and a smooth rental process.
+      </p>
+  
+      <div className="mt-3 d-flex align-items-center gap-4">
+        <img src={ava04} alt="" className="w-25 h-25 rounded-2" />
+        <div>
+          <h6 className="mb-0 mt-3">Emily R.</h6>
+          <p className="section__description">Customer</p>
         </div>
       </div>
-    </Slider>
+    </div>
+  </Slider>
+  
   );
 };
 

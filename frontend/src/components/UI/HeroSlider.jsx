@@ -25,8 +25,8 @@ const HeroSlider = () => {
         <div className="slider__item slider__item-01 mt-0">
             <Container>
                 <div className="slider__content">
-                    <h6 className="text-light mb-3">For Rent 70$ Per Day</h6>
-                    <h1 className="text-light mb-3">Reserve Now and Get 50% Off</h1>
+                <h6 className="text-light mb-3">From Only $60/Day</h6>
+                <h1 className="text-light mb-3">Drive in Style — Book Your Ride Today!</h1>
                     <button className="btn reserve__btn">
                          <Link to='/cars'>Reserve Now</Link>
                     </button>
@@ -37,8 +37,8 @@ const HeroSlider = () => {
         <div className="slider__item slider__item-02 mt-0">
             <Container>
                 <div className="slider__content">
-                    <h6 className="text-light mb3">For Rent 70$ Per Day</h6>
-                    <h1 className="text-light mb3">Reserve Now and Get 50% Off</h1>
+                <h6 className="text-light mb-3">Limited-Time Offer</h6>
+                <h1 className="text-light mb-3">Rent Now & Save 50% Instantly!</h1>
                     <button className="btn reserve__btn">
                          <Link to='/cars'>Reserve Now</Link>
                     </button>
@@ -49,8 +49,8 @@ const HeroSlider = () => {
         <div className="slider__item slider__item-03 mt-0">
             <Container>
                 <div className="slider__content">
-                    <h6 className="text-light mb3">For Rent 70$ Per Day</h6>
-                    <h1 className="text-light mb3">Reserve Now and Get 50% Off</h1>
+                <h6 className="text-light mb-3">Your Perfect Trip Starts Here</h6>
+                <h1 className="text-light mb-3">Affordable. Reliable. Unforgettable.</h1>
                     <button className="btn reserve__btn">
                          <Link to='/cars'>Reserve Now</Link>
                     </button>
