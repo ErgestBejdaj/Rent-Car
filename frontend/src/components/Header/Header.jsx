@@ -132,7 +132,7 @@ const Header = () => {
         <Container>
           <div className="navigation__wrapper d-flex align-items-center justify-content-between">
             <span className="mobile__menu" onClick={toggleMenu} aria-label="Toggle Menu">
-              {isMenuOpen ? <i className="ri-menu-line"></i> : <i className="ri-menu-line"></i>}
+              {isMenuOpen ? <i className="ri-close-line"></i> : <i className="ri-menu-line"></i>}
             </span>
             <div className="logo-menu">
                 <h1>
