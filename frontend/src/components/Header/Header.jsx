@@ -158,13 +158,6 @@ const Header = () => {
                 ))}
               </div>
             </div>
-
-            <div className="nav__right">
-              <div className="search__box">
-                <input type="text" placeholder="Search" aria-label="Search"></input>
-                <span><i className="ri-search-line"></i></span>
-              </div>
-            </div>
           </div>
         </Container>
       </div>

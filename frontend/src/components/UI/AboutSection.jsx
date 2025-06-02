@@ -43,7 +43,6 @@ const AboutSection = ({ aboutClass }) => {
     </p>
   </div>
 </div>
-
           </Col>
 
           <Col lg="6" md="6">
