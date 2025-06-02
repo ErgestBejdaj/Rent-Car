@@ -108,19 +108,18 @@ const CarDetails = () => {
                   style={{ columnGap: "2.8rem" }}
                   >
                      <button className="header__btn btn">
-                     <a
-  href={`https://wa.me/355683214444?text=${encodeURIComponent(
-    `Pershendetje, jam i interesuar per makinën ${singleCarItem.carName} (${singleCarItem.model}). A është ende e disponueshme?`
-  )}`}
-  className="phone-icon"
-  aria-label="WhatsApp"
-  target="_blank"
-  rel="noopener noreferrer"
->
-  <i className="ri-whatsapp-line"></i> Chat on Whatsapp
-</a>
-                         
-                     </button>
+                        <a
+                            href={`https://wa.me/355683214444?text=${encodeURIComponent(
+                            `Hello, I'm interested in the car ${singleCarItem.carName} (${singleCarItem.model}). Is it still available?`
+                            )}`}
+                            className="phone-icon"
+                            aria-label="WhatsApp"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                         >
+                        <i className="ri-whatsapp-line"></i> Chat on Whatsapp
+                        </a>
+                   </button>
                   </div>
               </div>
             </Col>
