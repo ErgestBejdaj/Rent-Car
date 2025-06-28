@@ -1,12 +1,10 @@
 // import all images from assets/images directory
 import img01 from "../all-images/cars-img/s-class.jpg";
 import img02 from "../all-images/cars-img/audi-q8.jpg";
-import img03 from "../all-images/cars-img/audi-a5.jpg";
 import img04 from "../all-images/cars-img/e-class.jpg";
 import img05 from "../all-images/cars-img/porche-cayenne.jpg";
 import img06 from "../all-images/cars-img/audi-a6.jpg";
-import img07 from "../all-images/cars-img/audi-a4.jpg";
-import img08 from "../all-images/cars-img/mercedes-offer.png";
+import img07 from "../all-images/cars-img/cls.PNG";
 
 const carData = [
   {
@@ -79,6 +77,22 @@ const carData = [
     carName: "Audi A4",
     imgUrl: img06,
     model: "Model-2019",
+    price: 60,
+    speed: "Petrol",
+    gps: "GPS Navigation",
+    seatType: "Heated seats",
+    automatic: "Automatic",
+    description:
+    "The Audi A4 is a sleek and refined sedan that offers excellent performance and comfort. This 2019 petrol model features heated seats, GPS navigation, and automatic transmission—making it perfect for daily commutes or weekend getaways. Experience premium quality at an affordable price.",
+  
+  },
+  {
+    id: 7,
+    brand: "Mercedez-Benz",
+    rating: 119,
+    carName: "CLS 350",
+    imgUrl: img07,
+    model: "Model-2016",
     price: 60,
     speed: "Petrol",
     gps: "GPS Navigation",
