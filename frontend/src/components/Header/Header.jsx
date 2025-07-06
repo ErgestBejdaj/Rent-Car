@@ -146,16 +146,17 @@ const Header = () => {
 
             <div className={`navigation ${isMenuOpen ? 'open' : ''}`}>
               <div className="menu">
-                 {navLinks.map((item, index) => (
-                   <NavLink
-                     to={item.path}
-                     className={({ isActive }) => isActive ? 'nav__active nav__item' : 'nav__item'}
-                     key={index}
-                    onClick={toggleMenu}
-                  >
-                    {item.display}
-                  </NavLink>
-                ))}
+                {navLinks.map((item, index) => (
+  <NavLink
+    to={item.path}
+    className={({ isActive }) => isActive ? 'nav__active nav__item' : 'nav__item'}
+    key={index}
+    onClick={() => setIsMenuOpen(false)} // Kjo mbyll menunë pa konflikt
+  >
+    {item.display}
+  </NavLink>
+))}
+
               </div>
             </div>
           </div>

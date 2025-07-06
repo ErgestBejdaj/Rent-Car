@@ -5,6 +5,7 @@ import img04 from "../all-images/cars-img/e-class.jpg";
 import img05 from "../all-images/cars-img/porche-cayenne.jpg";
 import img06 from "../all-images/cars-img/audi-a6.jpg";
 import img07 from "../all-images/cars-img/cls.PNG";
+import img08 from "../all-images/cars-img/A5.PNG";
 
 const carData = [
   {
@@ -93,15 +94,31 @@ const carData = [
     carName: "CLS 350",
     imgUrl: img07,
     model: "Model-2016",
-    price: 60,
-    speed: "Petrol",
+    price: 100,
+    speed: "Diesel",
     gps: "GPS Navigation",
     seatType: "Heated seats",
     automatic: "Automatic",
     description:
-    "The Audi A4 is a sleek and refined sedan that offers excellent performance and comfort. This 2019 petrol model features heated seats, GPS navigation, and automatic transmission—making it perfect for daily commutes or weekend getaways. Experience premium quality at an affordable price.",
-  
+    "The Mercedes-Benz CLS 350 is a luxurious and powerful sedan that combines sporty elegance with premium comfort. This 2016 petrol model features heated seats, GPS navigation, and automatic transmission—making it ideal for both city driving and long-distance journeys. Drive in style and experience German engineering at its finest, all at an accessible price.",
   },
+ {
+  id: 8,
+  brand: "Audi",
+  rating: 26,
+  carName: "A5",
+  imgUrl: img08,
+  model: "Model-2014",
+  price: 50,
+  speed: "Diesel",
+  gps: "GPS Navigation",
+  seatType: "Heated seats",
+  automatic: "Automatic",
+  description:
+    "The Audi A5 is a stylish and refined coupe that delivers both performance and comfort. This 2014 petrol model comes equipped with heated seats, GPS navigation, and an automatic transmission—perfect for those who appreciate a smooth and elegant driving experience. Enjoy premium German craftsmanship at a great value.",
+}
+
+
 
 
 
