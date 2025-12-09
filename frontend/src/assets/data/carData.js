@@ -147,7 +147,7 @@ const carData = [
   carName: "Seria 6",
   imgUrl: img10,
   model: "Model-2015",
-  price: 50,
+  price: 70,
   speed: "3.0 Nafte",
   gps: "GPS Navigation",
   seatType: "Heated seats",
