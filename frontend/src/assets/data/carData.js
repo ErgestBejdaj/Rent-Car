@@ -6,6 +6,14 @@ import img05 from "../all-images/cars-img/porche-cayenne.jpg";
 import img06 from "../all-images/cars-img/audi-a6.jpg";
 import img07 from "../all-images/cars-img/cls.PNG";
 import img08 from "../all-images/cars-img/A5.PNG";
+import img09 from "../all-images/cars-img/Audi a5 Bardh.PNG";
+import img10 from "../all-images/cars-img/Bmw.PNG";
+import img11 from "../all-images/cars-img/Golf 7.PNG";
+import img12 from "../all-images/cars-img/Golf 7 GTD.jpg";
+
+
+
+
 
 const carData = [
   {
@@ -116,6 +124,66 @@ const carData = [
   automatic: "Automatic",
   description:
     "The Audi A5 is a stylish and refined coupe that delivers both performance and comfort. This 2014 petrol model comes equipped with heated seats, GPS navigation, and an automatic transmission—perfect for those who appreciate a smooth and elegant driving experience. Enjoy premium German craftsmanship at a great value.",
+},
+{
+  id: 9,
+  brand: "Audi",
+  rating: 26,
+  carName: "A5",
+  imgUrl: img09,
+  model: "Model-2013",
+  price: 50,
+  speed: "2.0 Nafte",
+  gps: "GPS Navigation",
+  seatType: "Heated seats",
+  automatic: "Automatic",
+  description:
+    "The Audi A5 is a stylish and refined coupe that delivers both performance and comfort. This 2014 petrol model comes equipped with heated seats, GPS navigation, and an automatic transmission—perfect for those who appreciate a smooth and elegant driving experience. Enjoy premium German craftsmanship at a great value.",
+},
+{
+  id: 10,
+  brand: "BMW",
+  rating: 26,
+  carName: "Seria 6",
+  imgUrl: img10,
+  model: "Model-2015",
+  price: 50,
+  speed: "3.0 Nafte",
+  gps: "GPS Navigation",
+  seatType: "Heated seats",
+  automatic: "Automatic",
+  description:
+    "The BMW SERIA 6 is a stylish and refined coupe that delivers both performance and comfort. This 2014 petrol model comes equipped with heated seats, GPS navigation, and an automatic transmission—perfect for those who appreciate a smooth and elegant driving experience. Enjoy premium German craftsmanship at a great value.",
+},
+{
+  id: 11,
+  brand: "Golf",
+  rating: 26,
+  carName: "Golf 7",
+  imgUrl: img11,
+  model: "Model-2014 Look GTD",
+  price: 45,
+  speed: "2.0 Nafte",
+  gps: "GPS Navigation",
+  seatType: "Heated seats",
+  automatic: "Automatic",
+  description:
+    "The Golf 7 is a stylish and refined coupe that delivers both performance and comfort. This 2014 petrol model comes equipped with heated seats, GPS navigation, and an automatic transmission—perfect for those who appreciate a smooth and elegant driving experience. Enjoy premium German craftsmanship at a great value.",
+},
+{
+  id: 12,
+  brand: "Golf",
+  rating: 26,
+  carName: "Golf 7 GTD",
+  imgUrl: img12,
+  model: "2015 GTD",
+  price: 50,
+  speed: "2.0 Nafte",
+  gps: "GPS Navigation",
+  seatType: "Heated seats",
+  automatic: "Automatic",
+  description:
+    "The Golf 7 GTD is a stylish and refined coupe that delivers both performance and comfort. This 2014 petrol model comes equipped with heated seats, GPS navigation, and an automatic transmission—perfect for those who appreciate a smooth and elegant driving experience. Enjoy premium German craftsmanship at a great value.",
 }
 
 

@@ -11,7 +11,6 @@ import carData from "../assets/data/carData.js";
 import CarItem from "../components/UI/CarItem";
 import BecomeDriverSection from "../components/UI/BecomeDriverSection";
 import Testimonial from "../components/UI/Testimonial";
-
 import BlogList from "../components/UI/BlogList";
 
 const Home = () => {
@@ -45,7 +44,7 @@ const Home = () => {
               <h2 className="section__title">Hot Offers</h2>
             </Col>
 
-            {carData.slice(0, 6).map((item) => (
+            {carData.slice(0, 9).map((item) => (
               <CarItem item={item} key={item.id} />
             ))}
           </Row>
