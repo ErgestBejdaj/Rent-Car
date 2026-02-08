@@ -44,7 +44,7 @@ const Home = () => {
               <h2 className="section__title">Hot Offers</h2>
             </Col>
 
-            {carData.slice(0, 11).map((item) => (
+            {carData.slice(0, 14).map((item) => (
               <CarItem item={item} key={item.id} />
             ))}
           </Row>
