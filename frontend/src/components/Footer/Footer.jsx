@@ -1,5 +1,5 @@
 import { Container, Row, Col, ListGroup, ListGroupItem } from "reactstrap";
-import { NavLink, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import '../../styles/footer.css';
 
 const quicklinks = [
