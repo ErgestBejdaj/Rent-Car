@@ -1,15 +1,18 @@
 import React, { useState } from "react";
-import { Form, FormGroup, Button } from 'reactstrap';
-import axios from 'axios';
+import { Link } from "react-router-dom";
+import axios from "axios";
+import Helmet from "../Helmet/Helmet";
+import "../../styles/pages.css";
 
 const RegisterForm = () => {
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    password: '',
-    confirmPassword: ''
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
   });
+  const [status, setStatus] = useState(null);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -17,84 +20,68 @@ const RegisterForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (formData.password !== formData.confirmPassword) {
+      setStatus({ type: "error", text: "The two passwords don't match. Type them again." });
+      return;
+    }
     try {
-      const response = await axios.post('/register', formData, {
-        headers: {
-          'Content-Type': 'application/json',
-        },
+      await axios.post("/register", formData, {
+        headers: { "Content-Type": "application/json" },
       });
-      console.log('Registration successful:', response.data);
-      // Mund të ridrejtojmë përdoruesin ose të tregojmë një mesazh suksesi
+      setStatus({ type: "ok", text: "Account created. You can now log in." });
     } catch (error) {
-      console.error('Registration failed:', error.response ? error.response.data : error.message);
-      // Mund të tregojmë një mesazh gabimi për përdoruesin
+      setStatus({
+        type: "error",
+        text: "We couldn't create the account. Check your details and try again.",
+      });
     }
   };
 
   return (
-    <Form onSubmit={handleSubmit} className="register-form">
-      <div className="d-flex flex-wrap">
-        <FormGroup className='register-input col-md-6'>
-          <input
-            type='text'
-            name='firstName'
-            className="form-control"
-            placeholder='First Name'
-            required
-            value={formData.firstName}
-            onChange={handleChange}
-          />
-        </FormGroup>
-        <FormGroup className='register-input col-md-6'>
-          <input
-            type='text'
-            name='lastName'
-            className="form-control"
-            placeholder='Last Name'
-            required
-            value={formData.lastName}
-            onChange={handleChange}
-          />
-        </FormGroup>
-        <FormGroup className='register-input col-12'>
-          <input
-            type='email'
-            name='email'
-            className="form-control"
-            placeholder='Email Address'
-            required
-            value={formData.email}
-            onChange={handleChange}
-          />
-        </FormGroup>
-        <FormGroup className='register-input col-md-6'>
-          <input
-            type='password'
-            name='password'
-            className="form-control"
-            placeholder='Password'
-            required
-            value={formData.password}
-            onChange={handleChange}
-          />
-        </FormGroup>
-        <FormGroup className='register-input col-md-6'>
-          <input
-            type='password'
-            name='confirmPassword'
-            className="form-control"
-            placeholder='Confirm Password'
-            required
-            value={formData.confirmPassword}
-            onChange={handleChange}
-          />
-        </FormGroup>
-        <FormGroup className='register-button col-12'>
-          <Button type="submit" className='btn btn-primary w-100'>Register</Button>
-        </FormGroup>
-      </div>
-    </Form>
+    <Helmet title="Create account">
+      <section className="auth">
+        <form className="auth__card" onSubmit={handleSubmit}>
+          <h1>Create account</h1>
+
+          <div className="auth__row">
+            <div className="field">
+              <label htmlFor="r-first">First name</label>
+              <input id="r-first" name="firstName" className="input" required value={formData.firstName} onChange={handleChange} />
+            </div>
+            <div className="field">
+              <label htmlFor="r-last">Last name</label>
+              <input id="r-last" name="lastName" className="input" required value={formData.lastName} onChange={handleChange} />
+            </div>
+          </div>
+          <div className="field">
+            <label htmlFor="r-email">Email</label>
+            <input id="r-email" name="email" type="email" className="input" required value={formData.email} onChange={handleChange} />
+          </div>
+          <div className="auth__row">
+            <div className="field">
+              <label htmlFor="r-pass">Password</label>
+              <input id="r-pass" name="password" type="password" className="input" autoComplete="new-password" required value={formData.password} onChange={handleChange} />
+            </div>
+            <div className="field">
+              <label htmlFor="r-pass2">Confirm password</label>
+              <input id="r-pass2" name="confirmPassword" type="password" className="input" autoComplete="new-password" required value={formData.confirmPassword} onChange={handleChange} />
+            </div>
+          </div>
+
+          {status && (
+            <p className={`auth__status auth__status--${status.type}`} role="status">
+              {status.text}
+            </p>
+          )}
+
+          <button type="submit" className="btn btn--primary btn--block">Create account</button>
+          <p className="auth__alt">
+            Already have an account? <Link to="/login" className="text-link">Log in</Link>
+          </p>
+        </form>
+      </section>
+    </Helmet>
   );
-}
+};
 
 export default RegisterForm;

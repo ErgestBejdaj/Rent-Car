@@ -1,78 +1,86 @@
-import { Container, Row, Col, ListGroup, ListGroupItem } from "reactstrap";
-import { Link } from 'react-router-dom';
-import '../../styles/footer.css';
-
-const quicklinks = [
-  {
-    path: '/about',
-    display: 'About'
-  },
-  {
-    path: '/cars',
-    display: 'Car Listing'
-  },
-  {
-    path: '/contact',
-    display: 'Contact'
-  },
-];
+import React from "react";
+import { Link } from "react-router-dom";
+import {
+  RiInstagramLine,
+  RiTiktokLine,
+  RiFacebookLine,
+  RiPhoneLine,
+  RiMailLine,
+  RiMapPin2Line,
+} from "../../lib/icons";
+import logo from "../../assets/all-images/logo-pojana.png";
+import { SITE, LOCATIONS } from "../../lib/site";
+import "../../styles/footer.css";
 
 const Footer = () => {
-  const date = new Date();
-  const year = date.getFullYear();
+  const year = new Date().getFullYear();
 
   return (
-    <footer className='footer'>
-      <Container>
-        <Row>
-          <Col lg='3' md='4' sm='12'>
-            <div className="logo footer__logo">
-              <h1>
-                <Link to="/home" className="d-flex align-items-center gap-3">
-                  <i className="ri-car-line"></i>
-                  <span>
-                    Rent Car <br />Service
-                  </span>
-                </Link>
-              </h1>
-            </div>
-            <p className='footer__logo-content'>
-               Auto Rental Pojana – we offer car rentals in Tirana and Rinas Airport. Modern fleet, competitive prices, and 24/7 support for every customer.            </p>
-          </Col>
+    <footer className="footer">
+      <div className="container footer__grid">
+        <div className="footer__brand">
+          <img src={logo} alt="Auto Rent Pojana" className="footer__logo" />
+          <p>
+            Car rental in Tirana and at Tirana International Airport. Modern
+            fleet, clear prices and support around the clock.
+          </p>
+          <div className="footer__social">
+            <a href={SITE.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+              <RiInstagramLine />
+            </a>
+            <a href={SITE.tiktok} target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+              <RiTiktokLine />
+            </a>
+            <a href={SITE.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+              <RiFacebookLine />
+            </a>
+          </div>
+        </div>
 
-          <Col lg='3' md='4' sm='6'>
-            <div className='mb-4'>
-              <h5 className='footer__link-title'>Quick links</h5>
-              <ListGroup>
-                {
-                  quicklinks.map((item, index) => (
-                    <ListGroupItem key={index} className='p-0 mt-3 quick__link'>
-                      <Link to={item.path}>{item.display}</Link>
-                    </ListGroupItem>
-                  ))
-                }
-              </ListGroup>
-            </div>
-          </Col>
+        <div>
+          <h4>Rent</h4>
+          <ul>
+            <li><Link to="/cars">All cars</Link></li>
+            <li><Link to="/cars?category=SUV">SUVs</Link></li>
+            <li><Link to="/cars?category=Sedan">Sedans</Link></li>
+            <li><Link to="/cars?category=Hatchback">Hatchbacks</Link></li>
+          </ul>
+        </div>
 
-          <Col lg='3' md='4' sm='6'>
-            <div className='mb-4'>
-              <h5 className='footer__link-title'>Head Office</h5>
-              <p className='office__info'>Kompleksi Delijorgji, Tiranë,Albania</p>
-              <p className='office__info'>Phone: +355 68 321 4444</p>
-              <p className='office__info'>Support: 24/7</p>
-            </div>
-          </Col>
-          <Col lg='12'>
-            <div className="footer__bottom pt-4">
-              <p className="section__description d-flex align-items-center justify-content-center gap-1">
-                <i className="ri-copyright-line"></i>
-                Copyright {year}, Developed by Bejdex Solution. All rights reserved.
-              </p>
-            </div>
-          </Col>
-        </Row>
-      </Container>
+        <div>
+          <h4>Pick-up points</h4>
+          <ul>
+            {LOCATIONS.map((l) => (
+              <li key={l.id}>{l.name}</li>
+            ))}
+          </ul>
+        </div>
+
+        <div>
+          <h4>Contact</h4>
+          <ul className="footer__contact">
+            <li>
+              <RiPhoneLine /> <a href={SITE.phoneHref}>{SITE.phoneDisplay}</a>
+            </li>
+            <li>
+              <RiMailLine /> <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
+            </li>
+            <li>
+              <RiMapPin2Line /> {SITE.address}
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div className="container footer__bottom">
+        <span>© {year} {SITE.name}</span>
+        <nav>
+          <Link to="/about">About</Link>
+          <Link to="/blogs">Travel tips</Link>
+          <Link to="/contact">Contact</Link>
+        </nav>
+        <span>Developed by Bejdex Solution</span>
+      </div>
     </footer>
   );
 };

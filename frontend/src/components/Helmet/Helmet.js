@@ -1,10 +1,13 @@
-import React from "react";
+import { useEffect } from "react";
 
-const Helmet = (props) => {
-    
-        document.title = 'Rent Car Service -' + props.title;
-        return <div className="w-100">{props.children}</div>
-    
+const Helmet = ({ title, children }) => {
+  useEffect(() => {
+    document.title = title
+      ? `${title} | Auto Rent Pojana`
+      : "Auto Rent Pojana — Car rental in Tirana";
+  }, [title]);
+
+  return <>{children}</>;
 };
 
 export default Helmet;

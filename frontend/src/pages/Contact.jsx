@@ -1,90 +1,94 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { Container, Row, Col, Form, FormGroup, Input } from "reactstrap";
+import React, { useState } from "react";
+import {
+  RiPhoneLine,
+  RiMailLine,
+  RiMapPin2Line,
+  RiWhatsappLine,
+  RiInstagramLine,
+  RiTiktokLine,
+  RiFacebookLine,
+} from "../lib/icons";
 import Helmet from "../components/Helmet/Helmet";
 import CommonSection from "../components/UI/Commonsection";
-
-import "../styles/contact.css";
-
-const socialLinks = [
-  {
-    url: "#",
-    icon: "ri-facebook-line",
-  },
-  {
-    url: "https://www.instagram.com/autorental_pojana",
-    icon: "ri-instagram-line",
-  },
-  {
-    url: "https://www.tiktok.com/@autorental.pojana",
-    icon: "ri-tiktok-line",
-  },
-];
+import { SITE, whatsappLink } from "../lib/site";
+import "../styles/pages.css";
 
 const Contact = () => {
+  const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const change = (e) => setForm({ ...form, [e.target.name]: e.target.value });
+
+  // Hap aplikacionin e email-it me mesazhin e plotësuar
+  const submit = (e) => {
+    e.preventDefault();
+    const subject = `Website enquiry from ${form.name}`;
+    const body = `${form.message}\n\n${form.name}\n${form.email}`;
+    window.location.href = `mailto:${SITE.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  };
+
   return (
     <Helmet title="Contact">
-      <CommonSection title="Contact" />
-      <section>
-        <Container>
-          <Row>
-            <Col lg="7" md="7">
-              <h6 className="fw-bold mb-4">Get In Touch</h6>
+      <CommonSection
+        title="Contact us"
+        crumb="Contact"
+        text="The fastest way to reach us is WhatsApp. We answer around the clock."
+      />
 
-              <Form>
-                <FormGroup className="contact__form">
-                  <Input placeholder="Your Name" name='name' type="text" />
-                </FormGroup>
-                <FormGroup className="contact__form">
-                  <Input placeholder="Email" name="email" type="email" />
-                </FormGroup>
-                <FormGroup className="contact__form">
-                  <textarea
-                    rows="5"
-                    placeholder="Message"
-                    className="textarea"
-                  ></textarea>
-                </FormGroup>
-
-                <button className=" contact__btn" type="submit">
-                  Send Message
-                </button>
-              </Form>
-            </Col>
-
-            <Col lg="5" md="5">
-              <div className="contact__info">
-                <h6 className="fw-bold">Contact Information</h6>
-                <p className="section__description mb-0">
-                Kompleksi Delijorgji, Tiranë,Albania
-                </p>
-                <div className=" d-flex align-items-center gap-2">
-                  <h6 className="fs-6 mb-0">Phone:</h6>
-                  <p className="section__description mb-0">+355 68 321 4444</p>
-                </div>
-
-                <div className=" d-flex align-items-center gap-2">
-                  <h6 className="mb-0 fs-6">Email:</h6>
-                  <p className="section__description mb-0">rentalpojana@gmail.com</p>
-                </div>
-
-                <h6 className="fw-bold mt-4">Follow Us</h6>
-
-                <div className=" d-flex align-items-center gap-4 mt-3">
-                  {socialLinks.map((item, index) => (
-                    <Link
-                      to={item.url}
-                      key={index}
-                      className="social__link-icon"
-                    >
-                      <i class={item.icon}></i>
-                    </Link>
-                  ))}
-                </div>
+      <section className="section">
+        <div className="container contact">
+          <div className="contact__info">
+            <a href={whatsappLink("Hello! I have a question about renting a car.")} target="_blank" rel="noopener noreferrer" className="contact__card contact__card--wa">
+              <RiWhatsappLine />
+              <div>
+                <strong>WhatsApp</strong>
+                <span>Usually the quickest reply</span>
               </div>
-            </Col>
-          </Row>
-        </Container>
+            </a>
+            <a href={SITE.phoneHref} className="contact__card">
+              <RiPhoneLine />
+              <div>
+                <strong>{SITE.phoneDisplay}</strong>
+                <span>Phone support 24/7</span>
+              </div>
+            </a>
+            <a href={`mailto:${SITE.email}`} className="contact__card">
+              <RiMailLine />
+              <div>
+                <strong>{SITE.email}</strong>
+                <span>Email</span>
+              </div>
+            </a>
+            <div className="contact__card">
+              <RiMapPin2Line />
+              <div>
+                <strong>{SITE.address}</strong>
+                <span>Office and city pick-up point</span>
+              </div>
+            </div>
+
+            <div className="contact__social">
+              <a href={SITE.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram"><RiInstagramLine /></a>
+              <a href={SITE.tiktok} target="_blank" rel="noopener noreferrer" aria-label="TikTok"><RiTiktokLine /></a>
+              <a href={SITE.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook"><RiFacebookLine /></a>
+            </div>
+          </div>
+
+          <form className="contact__form" onSubmit={submit}>
+            <h2>Send us a message</h2>
+            <div className="field">
+              <label htmlFor="c-name">Your name</label>
+              <input id="c-name" name="name" className="input" required value={form.name} onChange={change} />
+            </div>
+            <div className="field">
+              <label htmlFor="c-email">Email</label>
+              <input id="c-email" name="email" type="email" className="input" required value={form.email} onChange={change} />
+            </div>
+            <div className="field">
+              <label htmlFor="c-msg">Message</label>
+              <textarea id="c-msg" name="message" className="input" required value={form.message} onChange={change} placeholder="Dates, car, pick-up point…" />
+            </div>
+            <button type="submit" className="btn btn--primary">Send email</button>
+          </form>
+        </div>
       </section>
     </Helmet>
   );

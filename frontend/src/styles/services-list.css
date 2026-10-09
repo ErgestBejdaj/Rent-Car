@@ -1,20 +1,58 @@
+.service__item {
+  height: 100%;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service__item:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-md);
+}
+
+.service__item span {
+  width: 64px;
+  height: 64px;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+  background: rgba(249, 168, 38, 0.15);
+  transition: background 0.3s ease;
+}
+
 .service__item span i {
-    font-size: 2.5rem;
-    color: #f9a826;
+  font-size: 1.9rem;
+  color: var(--gold-dark);
+  transition: color 0.3s ease;
+}
+
+.service__item:hover span {
+  background: var(--navy);
+}
+
+.service__item:hover span i {
+  color: var(--gold);
+}
+
+.service__item h6 {
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+.service__item p {
+  margin-bottom: 0;
+}
+
+@media only screen and (max-width: 768px) {
+  .service__item {
+    padding: 22px 18px;
   }
-  
+
   .service__item h6 {
-    font-size: 1.2rem;
-    font-weight: 600;
-    transition: 0.3s;
+    font-size: 1.05rem;
   }
-  
-  .service__item h6:hover {
-    color: #f9a826;
-  }
-  
-  @media only screen and (max-width: 768px) {
-    .service__item h6 {
-      font-size: 1.1rem;
-    }
-  }
+}

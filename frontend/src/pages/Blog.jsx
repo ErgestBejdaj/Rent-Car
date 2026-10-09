@@ -1,19 +1,20 @@
 import React from "react";
-import { Container, Row } from "reactstrap";
 import Helmet from "../components/Helmet/Helmet";
 import CommonSection from "../components/UI/Commonsection";
 import BlogList from "../components/UI/BlogList";
+import "../styles/pages.css";
 
 const Blog = () => {
   return (
-    <Helmet title="Blogs">
-      <CommonSection title="Blogs" />
-      <section>
-        <Container>
-          <Row>
-            <BlogList />
-          </Row>
-        </Container>
+    <Helmet title="Travel tips">
+      <CommonSection
+        title="Travel tips"
+        text="Practical notes on renting a car and driving around Albania."
+      />
+      <section className="section">
+        <div className="container">
+          <BlogList />
+        </div>
       </section>
     </Helmet>
   );

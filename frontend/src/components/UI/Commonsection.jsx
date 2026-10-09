@@ -1,13 +1,17 @@
 import React from "react";
-import { Container } from "reactstrap";
-import "../../styles/common-section.css";
+import { Link } from "react-router-dom";
 
-const CommonSection = ({ title }) => {
+// Koka e errët e faqeve të brendshme
+const CommonSection = ({ title, text, crumb }) => {
   return (
-    <section className="common__section mb-5">
-      <Container className="text-center">
-        <h1 className="text-light">{title}</h1>
-      </Container>
+    <section className="page-hero">
+      <div className="container">
+        <nav className="crumbs" aria-label="Breadcrumb">
+          <Link to="/home">Home</Link> / <span>{crumb || title}</span>
+        </nav>
+        <h1>{title}</h1>
+        {text && <p>{text}</p>}
+      </div>
     </section>
   );
 };

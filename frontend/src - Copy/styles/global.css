@@ -1,0 +1,33 @@
+.whatsapp__float {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #25d366;
+  color: #fff;
+  font-size: 30px;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  z-index: 9999;
+  transition: transform 0.2s ease;
+}
+
+.whatsapp__float:hover {
+  transform: scale(1.1);
+  color: #fff;
+}
+
+/* Mobile: ikona më e vogël dhe fiks në cep */
+@media (max-width: 768px) {
+  .whatsapp__float {
+    bottom: 16px;
+    right: 16px;
+    width: 50px;
+    height: 50px;
+    font-size: 26px;
+  }
+}

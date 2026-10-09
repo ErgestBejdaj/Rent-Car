@@ -1,28 +1,40 @@
-// src/components/Layout/Layout.js
-
-import React, { Fragment } from 'react';
-import { PayPalScriptProvider } from "@paypal/react-paypal-js";
+import React, { useEffect } from "react";
+import { useLocation } from "react-router-dom";
+import { RiWhatsappLine } from "../../lib/icons";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import Routers from "../../routers/Routers";
+import { whatsappLink } from "../../lib/site";
 
-const initialOptions = {
-  "client-id": "Aad3i5hxYajKSnA2dx99v3ppiUtopSQxShPt3HWv9LJTaHlWSxWLY_21-qLHlWXGBDtCRK0zMtm1DrzZ", // Zëvendësoni me Client ID tuaj nga PayPal
-  currency: "USD",
-  intent: "capture",
+// Kthen faqen lart sa herë ndryshon rruga
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
 };
 
 const Layout = () => {
   return (
-    <PayPalScriptProvider options={initialOptions}>
-      <Fragment>
-        <Header />
-        <div>
-          <Routers />
-        </div>
-        <Footer />
-      </Fragment>
-    </PayPalScriptProvider>
+    <>
+      <ScrollToTop />
+      <Header />
+      <main>
+        <Routers />
+      </main>
+      <Footer />
+
+      <a
+        href={whatsappLink("Hello! I'd like information about renting a car.")}
+        className="wa-float"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Chat with us on WhatsApp"
+      >
+        <RiWhatsappLine />
+      </a>
+    </>
   );
 };
 

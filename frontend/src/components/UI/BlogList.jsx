@@ -1,31 +1,35 @@
 import React from "react";
-import "../../styles/become-driver.css";
-import { Container, Row, Col } from "reactstrap";
 import { Link } from "react-router-dom";
-import driverImg from "../../assets/all-images/toyota-offer-2.png";
+import blogData from "../../assets/data/blogData";
 
-const BecomeDriverSection = () => {
+export const formatPostDate = (iso) =>
+  new Date(`${iso}T00:00`).toLocaleDateString("en-GB", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  });
+
+const BlogList = ({ exclude }) => {
   return (
-    <section className="become__driver">
-      <Container>
-        <Row>
-          <Col lg="6" md="6" sm="12" className="become__driver-img">
-            <img src={driverImg} alt="" className="w-100" />
-          </Col>
-
-          <Col lg="6" md="6" sm="12">
-            <h2 className="section__title become__driver-title">
-              Do You Want to Earn With Us? So Don't Be Late
-            </h2>
-
-            <button className="btn reserve__btn">
-                <Link to='/cars'>Reserve Now</Link>
-            </button>
-          </Col>
-        </Row>
-      </Container>
-    </section>
+    <div className="posts">
+      {blogData
+        .filter((b) => b.slug !== exclude)
+        .map((post) => (
+          <article className="post-card" key={post.id}>
+            <Link to={`/blogs/${post.slug}`} className="post-card__media" tabIndex={-1} aria-hidden="true">
+              <img src={post.imgUrl} alt="" loading="lazy" />
+            </Link>
+            <div className="post-card__body">
+              <p className="post-card__meta">{post.readTime}</p>
+              <h3>
+                <Link to={`/blogs/${post.slug}`}>{post.title}</Link>
+              </h3>
+              <p className="muted">{post.excerpt}</p>
+            </div>
+          </article>
+        ))}
+    </div>
   );
 };
 
-export default BecomeDriverSection;
+export default BlogList;

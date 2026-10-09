@@ -1,131 +1,169 @@
-// src/pages/CarDetails.js
-
-import React, { useEffect } from "react";
-import { useParams } from "react-router-dom";
-import { Container, Row, Col } from "reactstrap";
-import carData from "../assets/data/carData.js";
+import React, { useState } from "react";
+import { Link, useParams, useSearchParams } from "react-router-dom";
+import {
+  RiSettings3Line,
+  RiGasStationLine,
+  RiCalendarLine,
+  RiRoadsterLine,
+  RiMapPinLine,
+  RiTempHotLine,
+  RiCheckLine,
+  RiWhatsappLine,
+  RiPhoneLine,
+} from "../lib/icons";
 import Helmet from "../components/Helmet/Helmet";
+import BookingWidget from "../components/UI/BookingWidget";
+import CarItem from "../components/UI/CarItem";
+import carData from "../assets/data/carData";
+import {
+  SITE,
+  tripFromParams,
+  rentalDays,
+  whatsappLink,
+  bookingMessage,
+  categoryLabel,
+  engineLabel,
+  yearLabel,
+} from "../lib/site";
+import NotFound from "./NotFound";
+import "../styles/car.css";
+import "../styles/pages.css";
+
+const INCLUDED = [
+  `${SITE.kmPerDay} km per day (then ${SITE.currency}${SITE.extraKmPrice}/km)`,
+  "Pick-up at Rinas Airport or Tirana centre",
+  "24/7 support by phone",
+  "Confirmation on WhatsApp, no account needed",
+];
 
 const CarDetails = () => {
   const { slug } = useParams();
+  const [params] = useSearchParams();
+  const car = carData.find((c) => c.slug === slug);
+  const [trip, setTrip] = useState(() => tripFromParams(params));
 
-  const singleCarItem = carData.find((item) => item.carName === slug);
+  if (!car) return <NotFound />;
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [singleCarItem]);
+  const days = rentalDays(trip);
+  const total = days * car.price;
+
+  const specs = [
+    { icon: RiRoadsterLine, label: "Type", value: car.category },
+    { icon: RiSettings3Line, label: "Gearbox", value: car.automatic },
+    { icon: RiGasStationLine, label: "Engine", value: engineLabel(car) },
+    { icon: RiCalendarLine, label: "Year", value: car.year },
+    { icon: RiMapPinLine, label: "Navigation", value: car.gps },
+    { icon: RiTempHotLine, label: "Comfort", value: car.seatType },
+  ].filter((s) => s.value);
+
+  const similar = carData
+    .filter((c) => c.id !== car.id && c.category === car.category)
+    .slice(0, 3);
 
   return (
-    <Helmet title={singleCarItem.carName}>
-      <section>
-        <Container>
-          <Row>
-            <Col lg="6">
-              <img src={singleCarItem.imgUrl} alt="" className="w-100" />
-            </Col>
+    <Helmet title={`${car.carName} ${car.year}`.trim()}>
+      <section className="detail">
+        <div className="container">
+          <nav className="crumbs crumbs--light" aria-label="Breadcrumb">
+            <Link to="/home">Home</Link> / <Link to="/cars">Cars</Link> / <span>{car.carName}</span>
+          </nav>
 
-            <Col lg="6">
-              <div className="car__info">
-                <h2 className="section__title">{singleCarItem.carName}</h2>
-
-                <div className="d-flex align-items-center gap-5 mb-4 mt-3">
-                  <h6 className="rent__price fw-bold fs-4">
-                    ${singleCarItem.price}.00 / Day
-                  </h6>
-
-                  <span className="d-flex align-items-center gap-2">
-                    <span style={{ color: "#f9a826" }}>
-                      <i className="ri-star-s-fill"></i>
-                      <i className="ri-star-s-fill"></i>
-                      <i className="ri-star-s-fill"></i>
-                      <i className="ri-star-s-fill"></i>
-                      <i className="ri-star-s-fill"></i>
-                    </span>
-                    ({singleCarItem.rating} ratings)
-                  </span>
-                </div>
-
-                <p className="section__description">
-                  {singleCarItem.description}
-                </p>
-
-                <div
-                  className="d-flex align-items-center mt-3"
-                  style={{ columnGap: "4rem" }}
-                >
-                  <span className="d-flex align-items-center gap-1 section__description">
-                    <i
-                      className="ri-roadster-line"
-                      style={{ color: "#f9a826" }}
-                    ></i>{" "}
-                    {singleCarItem.model}
-                  </span>
-
-                  <span className="d-flex align-items-center gap-1 section__description">
-                    <i
-                      className="ri-settings-2-line"
-                      style={{ color: "#f9a826" }}
-                    ></i>{" "}
-                    {singleCarItem.automatic}
-                  </span>
-
-                  <span className="d-flex align-items-center gap-1 section__description">
-                    <i
-                      className="ri-timer-flash-line"
-                      style={{ color: "#f9a826" }}
-                    ></i>{" "}
-                    {singleCarItem.speed}
-                  </span>
-                </div>
-
-                <div
-                  className="d-flex align-items-center mt-3"
-                  style={{ columnGap: "2.8rem" }}
-                >
-                  <span className="d-flex align-items-center gap-1 section__description">
-                    <i className="ri-map-pin-line" style={{ color: "#f9a826" }}></i>{" "}
-                    {singleCarItem.gps}
-                  </span>
-
-                  <span className="d-flex align-items-center gap-1 section__description">
-                    <i
-                      className="ri-wheelchair-line"
-                      style={{ color: "#f9a826" }}
-                    ></i>{" "}
-                    {singleCarItem.seatType}
-                  </span>
-
-                  <span className="d-flex align-items-center gap-1 section__description">
-                    <i
-                      className="ri-building-2-line"
-                      style={{ color: "#f9a826" }}
-                    ></i>{" "}
-                    {singleCarItem.brand}
-                  </span>
-                </div>
-                <div
-                  className="d-flex align-items-center mt-3"
-                  style={{ columnGap: "2.8rem" }}
-                  >
-                     <button className="header__btn btn">
-                        <a
-                            href={`https://wa.me/355683214444?text=${encodeURIComponent(
-                            `Hello, I'm interested in the car ${singleCarItem.carName} (${singleCarItem.model}). Is it still available?`
-                            )}`}
-                            className="phone-icon"
-                            aria-label="WhatsApp"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                         >
-                        <i className="ri-whatsapp-line"></i> Chat on Whatsapp
-                        </a>
-                   </button>
-                  </div>
+          <div className="detail__grid">
+            <div className="detail__main">
+              <div className="detail__media">
+                <img src={car.imgUrl} alt={`${car.carName} ${car.year}`.trim()} style={car.imgPosition ? { objectPosition: car.imgPosition } : undefined} />
               </div>
-            </Col>
-          </Row>
-        </Container>
+
+              <div className="detail__head">
+                <span className="detail__cat">{car.category}</span>
+                <h1>{car.carName}</h1>
+                <p className="muted">{car.year ? `${yearLabel(car.year)}, or similar` : "Or similar"} {categoryLabel(car.category)}</p>
+              </div>
+
+              <dl className="specs">
+                {specs.map(({ icon: Icon, label, value }) => (
+                  <div className="spec" key={label}>
+                    <Icon />
+                    <dt>{label}</dt>
+                    <dd>{value}</dd>
+                  </div>
+                ))}
+              </dl>
+
+              <div className="detail__text">
+                <h2>About this car</h2>
+                <p>{car.description}</p>
+
+                <h2>Included in every rental</h2>
+                <ul className="checklist">
+                  {INCLUDED.map((i) => (
+                    <li key={i}><RiCheckLine /> {i}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            <aside className="detail__aside">
+              <div className="quote">
+                <div className="quote__price">
+                  <strong>{SITE.currency}{car.price}</strong>
+                  <span>/ day</span>
+                </div>
+
+                <BookingWidget variant="side" initial={trip} onChange={setTrip} />
+
+                <dl className="quote__sum">
+                  <div>
+                    <dt>{SITE.currency}{car.price} × {days} day{days > 1 ? "s" : ""}</dt>
+                    <dd>{SITE.currency}{total}</dd>
+                  </div>
+                  <div>
+                    <dt>Kilometres included</dt>
+                    <dd>{(SITE.kmPerDay * days).toLocaleString("en-GB")} km</dd>
+                  </div>
+                  <div className="quote__total">
+                    <dt>Total</dt>
+                    <dd>{SITE.currency}{total}</dd>
+                  </div>
+                </dl>
+
+                <a
+                  href={whatsappLink(bookingMessage(car, trip))}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn--whatsapp btn--block"
+                >
+                  <RiWhatsappLine /> Book on WhatsApp
+                </a>
+                <a href={SITE.phoneHref} className="btn btn--outline btn--block quote__call">
+                  <RiPhoneLine /> Call {SITE.phoneDisplay}
+                </a>
+                <p className="quote__note">
+                  Your dates and price are added to the message. We reply to confirm availability.
+                </p>
+              </div>
+            </aside>
+          </div>
+        </div>
       </section>
+
+      {similar.length > 0 && (
+        <section className="section section--mist">
+          <div className="container">
+            <div className="section-head">
+              <h2>Similar cars</h2>
+              <Link to={`/cars?category=${encodeURIComponent(car.category)}`} className="text-link">
+                All {car.category === "SUV" ? "SUVs" : `${car.category.toLowerCase()}s`}
+              </Link>
+            </div>
+            <div className="car-grid">
+              {similar.map((c) => (
+                <CarItem key={c.id} item={c} />
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
     </Helmet>
   );
 };
