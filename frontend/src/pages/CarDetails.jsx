@@ -1,131 +1,191 @@
-// src/pages/CarDetails.js
-
-import React, { useEffect } from "react";
-import { useParams } from "react-router-dom";
-import { Container, Row, Col } from "reactstrap";
-import carData from "../assets/data/carData.js";
+import React, { useState } from "react";
+import { Link, useParams, useSearchParams } from "react-router-dom";
+import {
+  RiSettings3Line,
+  RiGasStationLine,
+  RiCalendarLine,
+  RiRoadsterLine,
+  RiMapPinLine,
+  RiTempHotLine,
+  RiCheckLine,
+  RiWhatsappLine,
+  RiPhoneLine,
+  RiUserLine,
+} from "../lib/icons";
 import Helmet from "../components/Helmet/Helmet";
+import BookingWidget from "../components/UI/BookingWidget";
+import CarItem from "../components/UI/CarItem";
+import { useCars } from "../lib/cars";
+import {
+  SITE,
+  tripFromParams,
+  rentalDays,
+  whatsappLink,
+  bookingMessage,
+  engineLabel,
+  yearLabel,
+} from "../lib/site";
+import { useLang } from "../lib/i18n";
+import NotFound from "./NotFound";
+import "../styles/car.css";
+import "../styles/pages.css";
+
+const INCLUDED = ["inc.1", "inc.2", "inc.3", "inc.4"];
 
 const CarDetails = () => {
   const { slug } = useParams();
+  const [params] = useSearchParams();
+  const i18n = useLang();
+  const { t, tr, locale } = i18n;
+  const { cars: carData, loading } = useCars();
+  const car = carData.find((c) => c.slug === slug);
+  const [trip, setTrip] = useState(() => tripFromParams(params));
 
-  const singleCarItem = carData.find((item) => item.carName === slug);
+  if (!car && loading) {
+    return (
+      <section className="detail">
+        <div className="container">
+          <p className="muted detail__loading">{t("cars.loading")}</p>
+        </div>
+      </section>
+    );
+  }
+  if (!car) return <NotFound />;
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [singleCarItem]);
+  const days = rentalDays(trip);
+  const total = days * car.price;
+
+  const specs = [
+    { icon: RiRoadsterLine, label: t("spec.type"), value: t(`cat.${car.category}`) },
+    { icon: RiSettings3Line, label: t("spec.gearbox"), value: t(`val.${car.automatic}`) },
+    { icon: RiGasStationLine, label: t("spec.engine"), value: engineLabel(car, t) },
+    { icon: RiCalendarLine, label: t("spec.year"), value: car.year },
+    { icon: RiUserLine, label: t("spec.seats"), value: car.seats || "" },
+    { icon: RiMapPinLine, label: t("spec.nav"), value: car.gps ? t(`val.${car.gps}`) : "" },
+    { icon: RiTempHotLine, label: t("spec.comfort"), value: car.seatType ? t(`val.${car.seatType}`) : "" },
+  ].filter((s) => s.value);
+
+  const similar = carData
+    .filter((c) => c.id !== car.id && c.category === car.category)
+    .slice(0, 3);
 
   return (
-    <Helmet title={singleCarItem.carName}>
-      <section>
-        <Container>
-          <Row>
-            <Col lg="6">
-              <img src={singleCarItem.imgUrl} alt="" className="w-100" />
-            </Col>
+    <Helmet title={`${car.carName} ${car.year}`.trim()}>
+      <section className="detail">
+        <div className="container">
+          <nav className="crumbs crumbs--light" aria-label="Breadcrumb">
+            <Link to="/home">{t("crumb.home")}</Link> / <Link to="/cars">{t("crumb.cars")}</Link> / <span>{car.carName}</span>
+          </nav>
 
-            <Col lg="6">
-              <div className="car__info">
-                <h2 className="section__title">{singleCarItem.carName}</h2>
-
-                <div className="d-flex align-items-center gap-5 mb-4 mt-3">
-                  <h6 className="rent__price fw-bold fs-4">
-                    ${singleCarItem.price}.00 / Day
-                  </h6>
-
-                  <span className="d-flex align-items-center gap-2">
-                    <span style={{ color: "#f9a826" }}>
-                      <i className="ri-star-s-fill"></i>
-                      <i className="ri-star-s-fill"></i>
-                      <i className="ri-star-s-fill"></i>
-                      <i className="ri-star-s-fill"></i>
-                      <i className="ri-star-s-fill"></i>
-                    </span>
-                    ({singleCarItem.rating} ratings)
-                  </span>
-                </div>
-
-                <p className="section__description">
-                  {singleCarItem.description}
-                </p>
-
-                <div
-                  className="d-flex align-items-center mt-3"
-                  style={{ columnGap: "4rem" }}
-                >
-                  <span className="d-flex align-items-center gap-1 section__description">
-                    <i
-                      className="ri-roadster-line"
-                      style={{ color: "#f9a826" }}
-                    ></i>{" "}
-                    {singleCarItem.model}
-                  </span>
-
-                  <span className="d-flex align-items-center gap-1 section__description">
-                    <i
-                      className="ri-settings-2-line"
-                      style={{ color: "#f9a826" }}
-                    ></i>{" "}
-                    {singleCarItem.automatic}
-                  </span>
-
-                  <span className="d-flex align-items-center gap-1 section__description">
-                    <i
-                      className="ri-timer-flash-line"
-                      style={{ color: "#f9a826" }}
-                    ></i>{" "}
-                    {singleCarItem.speed}
-                  </span>
-                </div>
-
-                <div
-                  className="d-flex align-items-center mt-3"
-                  style={{ columnGap: "2.8rem" }}
-                >
-                  <span className="d-flex align-items-center gap-1 section__description">
-                    <i className="ri-map-pin-line" style={{ color: "#f9a826" }}></i>{" "}
-                    {singleCarItem.gps}
-                  </span>
-
-                  <span className="d-flex align-items-center gap-1 section__description">
-                    <i
-                      className="ri-wheelchair-line"
-                      style={{ color: "#f9a826" }}
-                    ></i>{" "}
-                    {singleCarItem.seatType}
-                  </span>
-
-                  <span className="d-flex align-items-center gap-1 section__description">
-                    <i
-                      className="ri-building-2-line"
-                      style={{ color: "#f9a826" }}
-                    ></i>{" "}
-                    {singleCarItem.brand}
-                  </span>
-                </div>
-                <div
-                  className="d-flex align-items-center mt-3"
-                  style={{ columnGap: "2.8rem" }}
-                  >
-                     <button className="header__btn btn">
-                        <a
-                            href={`https://wa.me/355683214444?text=${encodeURIComponent(
-                            `Hello, I'm interested in the car ${singleCarItem.carName} (${singleCarItem.model}). Is it still available?`
-                            )}`}
-                            className="phone-icon"
-                            aria-label="WhatsApp"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                         >
-                        <i className="ri-whatsapp-line"></i> Chat on Whatsapp
-                        </a>
-                   </button>
-                  </div>
+          <div className="detail__grid">
+            <div className="detail__main">
+              <div className="detail__media">
+                <img src={car.imgUrl} alt={`${car.carName} ${car.year}`.trim()} style={car.imgPosition ? { objectPosition: car.imgPosition } : undefined} />
               </div>
-            </Col>
-          </Row>
-        </Container>
+
+              <div className="detail__head">
+                <span className="detail__cat">{t(`cat.${car.category}`)}</span>
+                <h1>{car.carName}</h1>
+                <p className="muted">
+                  {car.year
+                    ? t("detail.subYear", { year: yearLabel(car.year, t), cat: car.category })
+                    : t("detail.subNoYear", { cat: car.category })}
+                </p>
+              </div>
+
+              <dl className="specs">
+                {specs.map(({ icon: Icon, label, value }) => (
+                  <div className="spec" key={label}>
+                    <Icon />
+                    <dt>{label}</dt>
+                    <dd>{value}</dd>
+                  </div>
+                ))}
+              </dl>
+
+              <div className="detail__text">
+                <h2>{t("detail.about")}</h2>
+                {tr(car.description) && <p>{tr(car.description)}</p>}
+
+                {car.features && tr(car.features).length > 0 && (
+                  <>
+                    <h2>{t("detail.features")}</h2>
+                    <ul className="checklist">
+                      {tr(car.features).map((f) => (
+                        <li key={f}><RiCheckLine /> {f}</li>
+                      ))}
+                    </ul>
+                  </>
+                )}
+
+                <h2>{t("detail.included")}</h2>
+                <ul className="checklist">
+                  {INCLUDED.map((i) => (
+                    <li key={i}><RiCheckLine /> {t(i)}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            <aside className="detail__aside">
+              <div className="quote">
+                <div className="quote__price">
+                  <strong>{SITE.currency}{car.price}</strong>
+                  <span>{t("perDay")}</span>
+                </div>
+
+                <BookingWidget variant="side" initial={trip} onChange={setTrip} />
+
+                <dl className="quote__sum">
+                  <div>
+                    <dt>{t("quote.line", { price: `${SITE.currency}${car.price}`, n: days })}</dt>
+                    <dd>{SITE.currency}{total}</dd>
+                  </div>
+                  <div>
+                    <dt>{t("quote.km")}</dt>
+                    <dd>{(SITE.kmPerDay * days).toLocaleString(locale)} km</dd>
+                  </div>
+                  <div className="quote__total">
+                    <dt>{t("quote.total")}</dt>
+                    <dd>{SITE.currency}{total}</dd>
+                  </div>
+                </dl>
+
+                <a
+                  href={whatsappLink(bookingMessage(car, trip, i18n))}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn--whatsapp btn--block"
+                >
+                  <RiWhatsappLine /> {t("quote.book")}
+                </a>
+                <a href={SITE.phoneHref} className="btn btn--outline btn--block quote__call">
+                  <RiPhoneLine /> {t("call", { phone: SITE.phoneDisplay })}
+                </a>
+                <p className="quote__note">{t("quote.note")}</p>
+              </div>
+            </aside>
+          </div>
+        </div>
       </section>
+
+      {similar.length > 0 && (
+        <section className="section section--mist">
+          <div className="container">
+            <div className="section-head">
+              <h2>{t("detail.similar")}</h2>
+              <Link to={`/cars?category=${encodeURIComponent(car.category)}`} className="text-link">
+                {t(`catAll.${car.category}`)}
+              </Link>
+            </div>
+            <div className="car-grid">
+              {similar.map((c) => (
+                <CarItem key={c.id} item={c} />
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
     </Helmet>
   );
 };

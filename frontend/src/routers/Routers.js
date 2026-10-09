@@ -1,5 +1,3 @@
-// src/routers/Routers.js
-
 import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import Home from "../pages/Home";
@@ -12,7 +10,7 @@ import NotFound from "../pages/NotFound";
 import Contact from "../pages/Contact";
 import RegisterForm from "../components/UI/Register";
 import LogInForm from "../components/UI/LogIn";
-import PaymentMethod from "../components/UI/PaymentMethod"; // Importoni komponentin PaymentMethod
+import PaymentMethod from "../components/UI/PaymentMethod";
 
 const Routers = () => {
   return (
@@ -21,13 +19,13 @@ const Routers = () => {
       <Route path="/home" element={<Home />} />
       <Route path="/about" element={<About />} />
       <Route path="/cars" element={<CarListing />} />
-      <Route path="/register" element={<RegisterForm />} />
-      <Route path="/login" element={<LogInForm />} />
       <Route path="/cars/:slug" element={<CarDetails />} />
       <Route path="/blogs" element={<Blog />} />
       <Route path="/blogs/:slug" element={<BlogDetails />} />
       <Route path="/contact" element={<Contact />} />
-      <Route path="/payment" element={<PaymentMethod />} /> {/* Rruga për PaymentMethod */}
+      <Route path="/register" element={<RegisterForm />} />
+      <Route path="/login" element={<LogInForm />} />
+      <Route path="/payment" element={<PaymentMethod />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );

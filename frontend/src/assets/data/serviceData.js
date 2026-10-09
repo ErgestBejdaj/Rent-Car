@@ -1,45 +1,60 @@
+// Shërbimet — "icon" është emri i një ikone nga src/lib/icons.js (remixicon)
+// title dhe desc janë në dy gjuhë: { en, sq }
 const serviceData = [
-    {
-      id: 1,
-      title: "City Transfer",
-      icon: "ri-map-pin-2-line",
-      desc: "Move freely around Tirana with our comfortable and reliable cars. Perfect for daily travel, business meetings, or casual outings.",
+  {
+    id: 1,
+    icon: "RiPlaneLine",
+    title: { en: "Airport pick-up and drop-off", sq: "Marrje dhe dorëzim në aeroport" },
+    desc: {
+      en: "We meet you at Tirana International Airport or take you back in time for your flight.",
+      sq: "Ju presim në Aeroportin Ndërkombëtar të Tiranës ose ju kthejmë në kohë për fluturimin.",
     },
-  
-    {
-      id: 2,
-      title: "Whole  City Tour",
-      icon: "ri-community-line",
-      desc: "Explore Tirana and other Albanian cities at your own pace. Our flexible rentals let you visit every place you want—comfortably and on your schedule.",
+  },
+  {
+    id: 2,
+    icon: "RiRoadMapLine",
+    title: { en: "250 km a day included", sq: "250 km në ditë të përfshira" },
+    desc: {
+      en: "Drive up to 250 km per day at no extra cost. Beyond that, each extra kilometre is €0.20.",
+      sq: "Ngisni deri në 250 km në ditë pa kosto shtesë. Përtej kësaj, çdo kilometër shtesë kushton €0.20.",
     },
-  
-    {
-      id: 3,
-      title: "Mileages Policy",
-      icon: "ri-roadster-line",
-      desc: "Drive up to 250 kilometers per day with no extra charges! For any additional kilometers, a fee of €0.20 per km applies.Perfect for holidays, city-to-city travel, and flexible daily use – with clear and fair limits.",
+  },
+  {
+    id: 3,
+    icon: "RiFlashlightLine",
+    title: { en: "Book in minutes", sq: "Rezervim për pak minuta" },
+    desc: {
+      en: "Choose a car online and confirm on WhatsApp or by phone. No account needed.",
+      sq: "Zgjidhni makinën online dhe konfirmoni në WhatsApp ose me telefon. Nuk nevojitet llogari.",
     },
-  
-    {
-      id: 4,
-      title: "Fast & Easy Booking",
-      icon: "ri-timer-flash-line",
-      desc: "Reserve your car online or by phone in just a few minutes. A simple, stress-free process with instant confirmation.",
+  },
+  {
+    id: 4,
+    icon: "RiMapPin2Line",
+    title: { en: "Two pick-up points", sq: "Dy pika marrjeje" },
+    desc: {
+      en: "Collect your car in central Tirana or straight from the airport terminal.",
+      sq: "Merrni makinën në qendër të Tiranës ose direkt në terminalin e aeroportit.",
     },
-  
-    {
-      id: 5,
-      title: "Many Pickup Locations",
-      icon: "ri-map-pin-line",
-      desc: "Pick up your rental car in downtown Tirana or directly at Tirana International Airport. Full flexibility for the start of your journey.",
+  },
+  {
+    id: 5,
+    icon: "RiCommunityLine",
+    title: { en: "City trips and tours", sq: "Udhëtime në qytet dhe ture" },
+    desc: {
+      en: "Get around Tirana for meetings, or take the car across Albania at your own pace.",
+      sq: "Lëvizni nëpër Tiranë për takime, ose udhëtoni nëpër Shqipëri me ritmin tuaj.",
     },
-  
-    {
-      id: 6,
-      title: "Airport Transfer",
-      icon: "ri-flight-takeoff-line",
-      desc: "We meet you at the airport or take you there on time for your flight. Fast, safe, and professional service – from the first step of your trip.",
+  },
+  {
+    id: 6,
+    icon: "RiCustomerService2Line",
+    title: { en: "Support 24/7", sq: "Mbështetje 24/7" },
+    desc: {
+      en: "Call or message us at any hour if something comes up on the road.",
+      sq: "Na telefononi ose na shkruani në çdo orë nëse ndodh diçka gjatë rrugës.",
     },
-  ];
-  
-  export default serviceData;
+  },
+];
+
+export default serviceData;

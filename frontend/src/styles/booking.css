@@ -1,0 +1,111 @@
+.booking {
+  background: #fff;
+  color: var(--text);
+  border-radius: var(--r-md);
+  padding: 20px;
+}
+
+.booking--hero {
+  box-shadow: 0 24px 60px rgba(10, 12, 16, 0.35);
+}
+
+.booking--bar {
+  border: 1px solid var(--line);
+}
+
+.booking--side {
+  padding: 0;
+}
+
+.booking__row {
+  display: flex;
+  gap: 12px;
+  align-items: flex-end;
+}
+
+.booking__loc {
+  flex: 1.2 1 0;
+  min-width: 0;
+}
+
+.booking__when {
+  flex: 1.4 1 0;
+  min-width: 0;
+}
+
+.booking__pair {
+  display: grid;
+  grid-template-columns: 1fr 92px;
+  gap: 6px;
+}
+
+.booking__submit {
+  flex: none;
+  min-height: 48px;
+  padding: 0 26px;
+}
+
+.booking__foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-top: 14px;
+  font-size: 0.9rem;
+}
+
+.booking__check {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.booking__check input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--ink);
+}
+
+.booking__days {
+  font-weight: 700;
+}
+
+/* varianti anësor (faqja e makinës) — gjithçka në kolonë */
+.booking--side .booking__row {
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.booking--side .booking__loc,
+.booking--side .booking__when {
+  flex: none;
+}
+
+.booking--side .booking__days {
+  display: none;
+}
+
+@media (max-width: 960px) {
+  .booking__row {
+    flex-wrap: wrap;
+  }
+  .booking__loc {
+    flex: 1 1 100%;
+  }
+  .booking__when {
+    flex: 1 1 calc(50% - 6px);
+  }
+  .booking__submit {
+    flex: 1 1 100%;
+  }
+}
+
+@media (max-width: 560px) {
+  .booking {
+    padding: 16px;
+  }
+  .booking__when {
+    flex: 1 1 100%;
+  }
+}

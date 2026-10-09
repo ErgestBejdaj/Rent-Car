@@ -1,19 +1,22 @@
 import React from "react";
-import { Container, Row } from "reactstrap";
 import Helmet from "../components/Helmet/Helmet";
 import CommonSection from "../components/UI/Commonsection";
 import BlogList from "../components/UI/BlogList";
+import { useLang } from "../lib/i18n";
+import "../styles/pages.css";
 
 const Blog = () => {
+  const { t } = useLang();
   return (
-    <Helmet title="Blogs">
-      <CommonSection title="Blogs" />
-      <section>
-        <Container>
-          <Row>
-            <BlogList />
-          </Row>
-        </Container>
+    <Helmet title={t("blog.title")}>
+      <CommonSection
+        title={t("blog.title")}
+        text={t("blog.text")}
+      />
+      <section className="section">
+        <div className="container">
+          <BlogList />
+        </div>
       </section>
     </Helmet>
   );

@@ -1,47 +1,69 @@
 import React from "react";
-import { Col } from "reactstrap";
 import { Link } from "react-router-dom";
-import "../../styles/car-item.css";
+import { RiSettings3Line, RiGasStationLine, RiCalendarLine } from "../../lib/icons";
+import { SITE, engineLabel } from "../../lib/site";
+import { useLang } from "../../lib/i18n";
+import "../../styles/car.css";
 
-const CarItem = (props) => {
-  const { imgUrl, model, carName, automatic, speed, price } = props.item;
+/**
+ * Karta e makinës.
+ * trip (opsionale) — nëse ka data të zgjedhura, shfaq çmimin total.
+ * query (opsionale) — ruhen datat kur klikon te detajet.
+ */
+const CarItem = ({ item, days, query = "" }) => {
+  const { slug, imgUrl, carName, category, year, automatic, price } = item;
+  const href = `/cars/${slug}${query ? `?${query}` : ""}`;
+  const { t } = useLang();
+  const engine = engineLabel(item, t);
 
   return (
-    <Col lg="4" md="4" sm="6" className="mb-5">
-      <div className="car__item">
-        <div className="car__img">
-          <img src={imgUrl} alt="" className="w-100" />
-        </div>
+    <article className="car-card">
+      <Link to={href} className="car-card__media" tabIndex={-1} aria-hidden="true">
+        <img src={imgUrl} alt="" loading="lazy" style={item.imgPosition ? { objectPosition: item.imgPosition } : undefined} />
+        <span className="car-card__tag">{t(`cat.${category}`)}</span>
+      </Link>
 
-        <div className="car__item-content mt-4">
-          <h4 className="section__title text-center">{carName}</h4>
-          <h6 className="rent__price text-center mt-">
-            ${price}.00 <span>/ Day</span>
-          </h6>
+      <div className="car-card__body">
+        <h3 className="car-card__title">
+          <Link to={href}>{carName}</Link>
+        </h3>
+        <p className="car-card__similar">{t("car.similar", { cat: category })}</p>
 
-          <div className="car__item-info d-flex align-items-center justify-content-between mt-3 mb-4">
-            <span className=" d-flex align-items-center gap-1">
-              <i class="ri-car-line"></i> {model}
-            </span>
-            <span className=" d-flex align-items-center gap-1">
-              <i class="ri-settings-2-line"></i> {automatic}
-            </span>
-            <span className=" d-flex align-items-center gap-1">
-              <i class="ri-timer-flash-line"></i> {speed}
-            </span>
+        <ul className="car-card__specs">
+          <li><RiSettings3Line /> {t(`val.${automatic}`)}</li>
+          {engine && <li><RiGasStationLine /> {engine}</li>}
+          {year && <li><RiCalendarLine /> {year}</li>}
+        </ul>
+
+        <div className="car-card__foot">
+          <div className="car-card__price">
+            <strong>{SITE.currency}{price}</strong>
+            <span>{t("perDay")}</span>
+            {days > 1 && (
+              <small>
+                {t("car.totalFor", { total: `${SITE.currency}${price * days}`, days })}
+              </small>
+            )}
           </div>
-
-          <button className=" w-50 car__item-btn car__btn-rent">
-            <Link to={`/cars/${carName}`}>Rent</Link>
-          </button>
-
-          <button className=" w-50 car__item-btn car__btn-details">
-            <Link to={`/cars/${carName}`}>Details</Link>
-          </button>
+          <Link to={href} className="btn btn--dark">
+            {t("car.select")}
+          </Link>
         </div>
       </div>
-    </Col>
+    </article>
   );
 };
+
+// Kartë bosh që shfaqet sa ngarkohen makinat
+export const CarSkeleton = () => (
+  <div className="car-card car-card--skeleton" aria-hidden="true">
+    <div className="car-card__media" />
+    <div className="car-card__body">
+      <span className="sk sk--title" />
+      <span className="sk sk--line" />
+      <span className="sk sk--line sk--short" />
+    </div>
+  </div>
+);
 
 export default CarItem;
